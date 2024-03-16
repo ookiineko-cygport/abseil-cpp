@@ -433,6 +433,7 @@ function(absl_cc_test)
   endif()
   target_compile_options(${_NAME}
     PRIVATE ${ABSL_CC_TEST_COPTS}
+            $<$<BOOL:${CYGWIN}>:-Wa,-mbig-obj>
   )
 
   target_link_libraries(${_NAME}

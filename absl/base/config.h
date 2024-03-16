@@ -416,7 +416,8 @@ static_assert(ABSL_INTERNAL_INLINE_NAMESPACE_STR[0] != 'h' ||
     defined(__asmjs__) || defined(__EMSCRIPTEN__) || defined(__Fuchsia__) || \
     defined(__sun) || defined(__ASYLO__) || defined(__myriad2__) ||          \
     defined(__HAIKU__) || defined(__OpenBSD__) || defined(__NetBSD__) ||     \
-    defined(__QNX__) || defined(__VXWORKS__) || defined(__hexagon__)
+    defined(__QNX__) || defined(__VXWORKS__) || defined(__hexagon__) ||      \
+    defined(__CYGWIN__)
 #define ABSL_HAVE_MMAP 1
 #endif
 
@@ -428,7 +429,7 @@ static_assert(ABSL_INTERNAL_INLINE_NAMESPACE_STR[0] != 'h' ||
 #error ABSL_HAVE_PTHREAD_GETSCHEDPARAM cannot be directly set
 #elif defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__) || \
     defined(_AIX) || defined(__ros__) || defined(__OpenBSD__) ||          \
-    defined(__NetBSD__) || defined(__VXWORKS__)
+    defined(__NetBSD__) || defined(__VXWORKS__) || defined(__CYGWIN__)
 #define ABSL_HAVE_PTHREAD_GETSCHEDPARAM 1
 #endif
 
@@ -437,7 +438,7 @@ static_assert(ABSL_INTERNAL_INLINE_NAMESPACE_STR[0] != 'h' ||
 // Checks whether sched_getcpu is available.
 #ifdef ABSL_HAVE_SCHED_GETCPU
 #error ABSL_HAVE_SCHED_GETCPU cannot be directly set
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__CYGWIN__)
 #define ABSL_HAVE_SCHED_GETCPU 1
 #endif
 
@@ -448,7 +449,7 @@ static_assert(ABSL_INTERNAL_INLINE_NAMESPACE_STR[0] != 'h' ||
 #ifdef ABSL_HAVE_SCHED_YIELD
 #error ABSL_HAVE_SCHED_YIELD cannot be directly set
 #elif defined(__linux__) || defined(__ros__) || defined(__native_client__) || \
-    defined(__VXWORKS__)
+    defined(__VXWORKS__) || defined(__CYGWIN__)
 #define ABSL_HAVE_SCHED_YIELD 1
 #endif
 
@@ -463,7 +464,7 @@ static_assert(ABSL_INTERNAL_INLINE_NAMESPACE_STR[0] != 'h' ||
 // platforms.
 #ifdef ABSL_HAVE_SEMAPHORE_H
 #error ABSL_HAVE_SEMAPHORE_H cannot be directly set
-#elif defined(__linux__) || defined(__ros__) || defined(__VXWORKS__)
+#elif defined(__linux__) || defined(__ros__) || defined(__VXWORKS__) || defined(__CYGWIN__)
 #define ABSL_HAVE_SEMAPHORE_H 1
 #endif
 

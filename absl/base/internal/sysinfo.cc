@@ -461,6 +461,10 @@ pid_t GetTID() {
   return reinterpret_cast<pid_t>(thread);
 }
 
+#elif defined(__CYGWIN__)
+
+pid_t GetTID() { return reinterpret_cast<pid_t>(pthread_self()); }
+
 #else
 
 // Fallback implementation of `GetTID` using `pthread_self`.

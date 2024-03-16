@@ -14,6 +14,11 @@
 // limitations under the License.
 //
 
+#ifdef __CYGWIN__
+// for sched_getcpu()
+#define _GNU_SOURCE
+#endif
+
 #include "absl/debugging/failure_signal_handler.h"
 
 #include "absl/base/config.h"

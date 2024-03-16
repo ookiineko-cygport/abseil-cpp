@@ -139,7 +139,7 @@
 #if (ABSL_HAVE_ATTRIBUTE(weak) ||                                         \
      (defined(__GNUC__) && !defined(__clang__))) &&                       \
     (!defined(_WIN32) || (defined(__clang__) && __clang_major__ >= 9)) && \
-    !defined(__MINGW32__)
+    !defined(__MINGW32__) && !defined(__CYGWIN__)
 #undef ABSL_ATTRIBUTE_WEAK
 #define ABSL_ATTRIBUTE_WEAK __attribute__((weak))
 #define ABSL_HAVE_ATTRIBUTE_WEAK 1

@@ -57,6 +57,10 @@ int NumCPUs();
 // return types of GetProcessId() and GetThreadId() are both DWORD, an unsigned
 // 32-bit type.
 using pid_t = uint32_t;
+#elif defined(__CYGWIN__)
+// HACK: Shadowing the builtin pid_t type from the standard library.
+// pthread_t on Cygwin is a pointer type, but pid_t is an int.
+using pid_t = intptr_t;
 #endif
 pid_t GetTID();
 
